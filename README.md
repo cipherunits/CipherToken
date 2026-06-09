@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/cipher-unit/CipherToken/refs/heads/main/logo.png" width=100>
+<img src="https://github.com/cipherunits/CipherToken/blob/main/logo.png" width=100>
 
 # CipherToken
 
