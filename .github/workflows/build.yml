@@ -1,6 +1,13 @@
 name: CI/CD
 
 on:
+  push:
+    branches:
+      - main
+      - master
+    tags:
+      - "v*"
+  pull_request:
   workflow_dispatch:
     inputs:
       publish_to_pypi:
@@ -27,7 +34,7 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.12"
+          python-version: "3.8"
 
       - name: Build Wheels
         uses: PyO3/maturin-action@v1
@@ -38,7 +45,7 @@ jobs:
           args: >
             --release
             --out dist
-            --interpreter python3.12
+            --find-interpreter
           manylinux: auto
 
       - uses: actions/upload-artifact@v4

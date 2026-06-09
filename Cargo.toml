@@ -1,6 +1,6 @@
 [package]
 name = "ciphertoken"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 
 [lib]
@@ -8,11 +8,11 @@ name = "ciphertoken"
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "0.28.3", features = [
+pyo3 = { version = "0.20.3", features = [
     "extension-module",
     "abi3-py38"
 ] }
-pyo3-asyncio = { version = "0.20", features = ["tokio-runtime"] }
+pyo3-asyncio = { version = "0.20.0", features = ["tokio-runtime"] }
 
 jsonwebtoken = "9.2"
 serde = { version = "1.0", features = ["derive"] }
