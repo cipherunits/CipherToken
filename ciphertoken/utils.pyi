@@ -1,0 +1,7 @@
+
+
+# Constants
+DEFAULT_SECRET_SIZE: int
+MIN_SECRET_SIZE: int
+TOKEN_ACCESS: str
+TOKEN_REFRESH: str

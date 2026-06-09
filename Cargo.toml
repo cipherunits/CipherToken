@@ -1,0 +1,31 @@
+[package]
+name = "ciphertoken"
+version = "0.1.2"
+edition = "2021"
+
+[lib]
+name = "ciphertoken"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = { version = "0.20", features = ["extension-module"] }
+pyo3-asyncio = { version = "0.20", features = ["tokio-runtime"] }
+
+jsonwebtoken = "9.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+uuid = { version = "1.7", features = ["v4"] }
+rand = "0.8"
+rand_core = "0.6"
+base64 = "0.21"
+tokio = { version = "1.36", features = ["macros", "rt-multi-thread"] }
+rsa = "0.9"
+pem = "3"
+pkcs8 = "0.10"
+
+[features]
+default = []
+extension-module = ["pyo3/extension-module"]
+
+[package.metadata.maturin]
+include = ["ciphertoken"]

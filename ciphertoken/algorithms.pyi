@@ -1,0 +1,12 @@
+HS256: str
+HS384: str
+HS512: str
+RS256: str
+RS384: str
+RS512: str
+ES256: str
+ES384: str
+PS256: str
+PS384: str
+PS512: str
+EDDSA: str

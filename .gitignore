@@ -1,0 +1,7 @@
+venv
+/.env
+r.txt
+target/
+dist/
+*.whl
+*.tar.gz
