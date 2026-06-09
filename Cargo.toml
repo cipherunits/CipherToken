@@ -8,7 +8,10 @@ name = "ciphertoken"
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "0.28.3", features = ["extension-module"] }
+pyo3 = { version = "0.28.3", features = [
+    "extension-module",
+    "abi3-py38"
+] }
 pyo3-asyncio = { version = "0.20", features = ["tokio-runtime"] }
 
 jsonwebtoken = "9.2"
