@@ -2,156 +2,66 @@
 
 # CipherToken
 
-**CipherToken** is a modern, high-performance Python library for cryptography and JWT (JSON Web Token) management.  
-It is implemented in **Rust** using **PyO3**, providing both speed and security for generating, encoding, decoding, and verifying tokens.  
+**CipherToken** is a **next-generation** token engine built for developers who demand speed, security, and reliability. Currently focused on **JWT**, it provides a complete token lifecycle — from key generation and token minting to verification, rotation, and expiry tracking — all backed by the raw performance of **Rust**.
 
-The library is designed to be modular, organized into **submodules** for secret management, time utilities, algorithms, and token handling.  
-It supports both **synchronous** and **asynchronous** operations
+- Python 3.8+
+- HMAC, RSA, ECDSA, RSA-PSS, EdDSA
+- Sync and Async APIs via **Tokio**
 
----
-
-## Library Overview
-
-CipherToken is structured into the following main parts:
-
-### 1. `secret` Module
-Handles key generation for symmetric (HMAC) and asymmetric (RSA) algorithms:
-
-- `secret_key()` – Generate a random HMAC key (default 32 bytes)
-- `secret_key_with_size(size: int)` – Generate HMAC key with a custom size
-- `generate_hmac_secret(size: int)` – Generate an HMAC secret key
-- `generate_hmac_secret_async(size: int)` – Async version of HMAC key generation
-- `generate_rsa_keypair(bits: Optional[int] = 2048)` – Generate RSA private/public key pair
+Built by **[Cipher-Unit](https://cipherunit.xyz/)**.
 
 ---
 
-### 2. `time` Module
-Provides utility functions for time conversion and timestamps:
+## Documentation
 
-- `now()` – Current UNIX timestamp
-- `seconds(n: int)` – Convert n seconds to seconds
-- `minutes(n: int)` – Convert n minutes to seconds
-- `hours(n: int)` – Convert n hours to seconds
-- `days(n: int)` – Convert n days to seconds
-- `weeks(n: int)` – Convert n weeks to seconds
+📖 **Official Documentation:** [https://cipherunits.github.io/CipherToken/](https://cipherunits.github.io/CipherToken/)
 
 ---
-
-### 3. `utils` Module
-Contains useful constants:
-
-- `DEFAULT_SECRET_SIZE` – Default key size
-- `MIN_SECRET_SIZE` – Minimum allowed key size
-- `TOKEN_ACCESS` – Access token type
-- `TOKEN_REFRESH` – Refresh token type
-
----
-
-### 4. `algorithms` Module
-Defines algorithm constants for token signing:
-
-- HMAC: `HS256`, `HS384`, `HS512`
-- RSA: `RS256`, `RS384`, `RS512`
-- ECDSA: `ES256`, `ES384`
-- RSA-PSS: `PS256`, `PS384`, `PS512`
-- Edwards Curve: `EDDSA`
-
----
-
-### 5. `CipherToken` Class
-Main class for managing JWTs:
-
-- **Constructor:**
-```python
-from ciphertoken import CipherToken
-
-CipherToken(secret: str, algorithm: str, access_ttl: int, refresh_ttl: int)
-```
-
-### Synchronous methods:
-```python
-access(user_id: int, extra_payload: Optional[dict] = None) -> str
-refresh(user_id: int, extra_payload: Optional[dict] = None) -> str
-decode(token: str) -> dict
-verify(token: str) -> bool
-rotation(refresh_token: str, extra_payload: Optional[dict] = None) -> Tuple[str, str]
-inspect(token: str) -> dict
-remaining_time(token: str) -> Optional[int]
-algorithm_name() -> str
-```
-
-### Asynchronous methods:
-```python
-await access_async(user_id: int, extra_payload: Optional[dict] = None) -> str
-await refresh_async(user_id: int, extra_payload: Optional[dict] = None) -> str
-await decode_async(token: str) -> dict
-await verify_async(token: str) -> bool
-await rotation_async(refresh_token: str, extra_payload: Optional[dict] = None) -> Tuple[str, str]
-```
-
-### Helper Functions:
-
-`is_jwt_format(token: str) – Check if a string is a valid JWT`
-
-`validate_jwt_format(token: str) – Validate JWT structure`
 
 ## Installation
 
-CipherToken is available via PyPI. Install it with:
-
-`pip install ciphertoken`
+```bash
+pip install ciphertoken
+```
 
 ---
 
-### Usage Example
+## Quick Example
 
 ```python
-from ciphertoken.secret import secret_key
 from ciphertoken import CipherToken
-from ciphertoken.time import minutes, days
-from ciphertoken.utils import TOKEN_REFRESH
 from ciphertoken.algorithms import HS256
+from ciphertoken.time import minutes, days
+from ciphertoken.jwt import access, refresh, rotation
 
-# Generate a secret key
-key = secret_key()
+token = CipherToken(
+    secret="your-strong-secret-key",
+    algorithm=HS256,
+    access_ttl=minutes(10),
+    refresh_ttl=days(7),
+)
 
-# Create a CipherToken instance
-token = CipherToken(secret=key, algorithm=HS256, access_ttl=minutes(10), refresh_ttl=days(7))
+access_token = access(token, payload={"user_id": 42})
+refresh_token = refresh(token, payload={"user_id": 42})
+new_access, new_refresh = rotation(token, refresh_token)
 
-# Generate access and refresh tokens
-access_token = token.access(user_id=123)
-refresh_token = token.refresh(user_id=123)
-
-# Verify and decode tokens
-payload = token.decode(access_token)
-is_valid = token.verify(access_token)
-
-# Async usage
-import asyncio
-
-async def generate_async_token():
-    access_token = await token.access_async(user_id=123)
-    payload = await token.decode_async(access_token)
-    return payload
-
-asyncio.run(generate_async_token())
-
+print(token.verify(access_token))  # True
+print(token.decode(access_token))
 ```
 
-### Implementation Notes
+---
 
-- Built in Rust using PyO3 for maximum speed and memory safety
+## Contribute
 
-- Supports synchronous and asynchronous workflows
+Contributions are welcome! Whether it's bug fixes, new algorithms, documentation improvements, or feature suggestions — feel free to open an issue or pull request.
 
-- Fully modular: secret, time, utils, algorithms, and CipherToken class
+- **Repository:** [https://github.com/cipherunits/CipherToken](https://github.com/cipherunits/CipherToken)
+- **Issues:** [https://github.com/cipherunits/CipherToken/issues](https://github.com/cipherunits/CipherToken/issues)
 
-- Secure key handling with HMAC and RSA support
+Please read the code of conduct and contribution guidelines before submitting. All contributions must follow the MIT license.
 
-- Easily extendable for additional algorithms
+---
 
+## License
 
-### Summary
-
-CipherToken is a modern, Rust-backed Python library for authentication and JWT management.
-It is ideal for web APIs, microservices, or any system that requires secure token generation, verification, and rotation.
+**MIT** — see [LICENSE](LICENSE) for details.

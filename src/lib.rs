@@ -14,17 +14,17 @@ mod secret;
 mod time;
 mod algorithms;
 mod utils;
+mod jwt;
 
 #[derive(Debug, Serialize, Deserialize)]
 pub struct Claims {
-    pub id: Option<i128>,
     pub exp: usize,
     pub ttl: usize,
     pub token: String,
     pub jti: String,
-    // extra payload
+    // payload
     #[serde(flatten)]
-    pub extra: Map<String, Value>,
+    pub payload: Map<String, Value>,
 }
 
 #[pyclass]
@@ -78,14 +78,13 @@ impl CipherToken {
         })
     }
 
-    #[pyo3(signature = (ttl_time, token_type, user_id=None, extra_payload=None))]
+    #[pyo3(signature = (ttl_time, token_type, payload=None))]
     pub fn create_token(
         &self,
         py: Python,
         ttl_time: u64,
         token_type: String,
-        user_id: Option<i128>,
-        extra_payload: Option<&PyDict>,
+        payload: Option<&PyDict>,
     ) -> PyResult<String> {
         let uuid = Uuid::new_v4();
 
@@ -96,25 +95,24 @@ impl CipherToken {
             + ttl_time;
 
         
-        let mut extra_map = Map::new();
+        let mut payload_map = Map::new();
 
-        if let Some(py_dict) = extra_payload {
+        if let Some(py_dict) = payload {
             for (key, value) in py_dict.iter() {
                 let key_str = key.extract::<String>()?;
 
                 
                 let json_value = python_to_json(py, value)?;
-                extra_map.insert(key_str, json_value);
+                payload_map.insert(key_str, json_value);
             }
         }
 
         let claims = Claims {
-            id: user_id,
             exp: exp as usize,
             ttl: ttl_time as usize,
             token: token_type,
             jti: uuid.to_string(),
-            extra: extra_map,
+            payload: payload_map,
         };
 
         let encoding_key = match self.algorithm {
@@ -144,37 +142,42 @@ impl CipherToken {
         Ok(token)
     }
 
+    #[pyo3(signature = (payload=None))]
+    pub fn payload(
+        &self,
+        py: Python,
+        payload: Option<&PyDict>,
+    ) -> PyResult<String> {
+        self.create_token(py, self.access_ttl, "access".to_string(), payload)
+    }
+
     /// create access token - sync
-    #[pyo3(signature = (user_id, extra_payload=None))]
+    #[pyo3(signature = (payload=None))]
     pub fn access(
         &self,
         py: Python,
-        user_id: i128,
-        extra_payload: Option<&PyDict>,
+        payload: Option<&PyDict>,
     ) -> PyResult<String> {
         self.create_token(
             py,
             self.access_ttl,
             "access".to_string(),
-            Some(user_id),
-            extra_payload,
+            payload,
         )
     }
 
     /// create refresh token - sync
-    #[pyo3(signature = (user_id, extra_payload=None))]
+    #[pyo3(signature = (payload=None))]
     pub fn refresh(
         &self,
         py: Python,
-        user_id: i128,
-        extra_payload: Option<&PyDict>,
+        payload: Option<&PyDict>,
     ) -> PyResult<String> {
         self.create_token(
             py,
             self.refresh_ttl,
             "refresh".to_string(),
-            Some(user_id),
-            extra_payload,
+            payload,
         )
     }
 
@@ -208,15 +211,12 @@ impl CipherToken {
         let claims = token_data.claims;
         let dict = PyDict::new(py);
 
-        if let Some(id) = claims.id {
-            dict.set_item("id", id)?;
-        }
         dict.set_item("exp", claims.exp)?;
         dict.set_item("ttl", claims.ttl)?;
         dict.set_item("token", claims.token)?;
         dict.set_item("jti", claims.jti)?;
 
-        for (key, value) in claims.extra {
+        for (key, value) in claims.payload {
             let py_value = json_to_python(py, &value)?;
             dict.set_item(key, py_value)?;
         }
@@ -225,12 +225,12 @@ impl CipherToken {
     }
 
     /// token rotation - sync
-    #[pyo3(signature = (refresh_token, extra_payload=None))]
+    #[pyo3(signature = (refresh_token, payload=None))]
     pub fn rotation(
         &self,
         py: Python,
         refresh_token: String,
-        extra_payload: Option<&PyDict>,
+        payload: Option<&PyDict>,
     ) -> PyResult<(String, String)> {
         let claims_dict = self.decode(py, &refresh_token)?;
         let claims_dict = claims_dict.as_ref(py);
@@ -246,13 +246,8 @@ impl CipherToken {
             ));
         }
 
-        let user_id: i128 = claims_dict
-            .get_item("id")?
-            .ok_or_else(|| pyo3::exceptions::PyValueError::new_err("User ID not found"))?
-            .extract()?;
-
-        let new_access = self.access(py, user_id, extra_payload.clone())?;
-        let new_refresh = self.refresh(py, user_id, extra_payload)?;
+        let new_access = self.access(py, payload.clone())?;
+        let new_refresh = self.refresh(py, payload)?;
 
         Ok((new_access, new_refresh))
     }
@@ -311,13 +306,12 @@ impl CipherToken {
         match decode::<Claims>(token, &decoding_key, &validation) {
             Ok(decoded) => {
                 let dict = PyDict::new(py);
-                dict.set_item("id", decoded.claims.id)?;
                 dict.set_item("exp", decoded.claims.exp)?;
                 dict.set_item("token", decoded.claims.token)?;
                 dict.set_item("jti", decoded.claims.jti)?;
                 dict.set_item("ttl", decoded.claims.ttl)?;
 
-                for (key, value) in decoded.claims.extra {
+                for (key, value) in decoded.claims.payload {
                     let py_value = json_to_python(py, &value)?;
                     dict.set_item(key, py_value)?;
                 }
@@ -395,17 +389,16 @@ impl CipherToken {
 
     // Async methods
     /// create access token - async
-    #[pyo3(signature = (user_id, extra_payload=None))]
+    #[pyo3(signature = (payload=None))]
     pub fn access_async<'a>(
         &'a self,
         py: Python<'a>,
-        user_id: i128,
-        extra_payload: Option<&PyDict>,
+        payload: Option<&PyDict>,
     ) -> PyResult<&'a PyAny> {
         let secret = self.secret.clone();
         let algorithm = self.algorithm;
         let access_ttl = self.access_ttl;
-        let extra_payload_cloned = extra_payload.map(|dict| dict.into());
+        let payload_cloned = payload.map(|dict| dict.into());
 
         future_into_py(py, async move {
             let uuid = Uuid::new_v4();
@@ -416,12 +409,11 @@ impl CipherToken {
                 + access_ttl;
 
             let claims = Claims {
-                id: Some(user_id),
                 exp: exp as usize,
                 ttl: access_ttl as usize,
                 token: "access".to_string(),
                 jti: uuid.to_string(),
-                extra: extra_map_from_py(extra_payload_cloned).await?,
+                payload: payload_map_from_py(payload_cloned).await?,
             };
 
             let encoding_key = create_encoding_key(&secret, algorithm)?;
@@ -438,17 +430,16 @@ impl CipherToken {
     }
 
     /// create refresh token - async
-    #[pyo3(signature = (user_id, extra_payload=None))]
+    #[pyo3(signature = (payload=None))]
     pub fn refresh_async<'a>(
         &'a self,
         py: Python<'a>,
-        user_id: i128,
-        extra_payload: Option<&PyDict>,
+        payload: Option<&PyDict>,
     ) -> PyResult<&'a PyAny> {
         let secret = self.secret.clone();
         let algorithm = self.algorithm;
         let refresh_ttl = self.refresh_ttl;
-        let extra_payload_cloned = extra_payload.map(|dict| dict.into());
+        let payload_cloned = payload.map(|dict| dict.into());
 
         future_into_py(py, async move {
             let uuid = Uuid::new_v4();
@@ -459,12 +450,11 @@ impl CipherToken {
                 + refresh_ttl;
 
             let claims = Claims {
-                id: Some(user_id),
                 exp: exp as usize,
                 ttl: refresh_ttl as usize,
                 token: "refresh".to_string(),
                 jti: uuid.to_string(),
-                extra: extra_map_from_py(extra_payload_cloned).await?,
+                payload: payload_map_from_py(payload_cloned).await?,
             };
 
             let encoding_key = create_encoding_key(&secret, algorithm)?;
@@ -505,15 +495,12 @@ impl CipherToken {
 
             let py_dict = Python::with_gil(|py| {
                 let dict = PyDict::new(py);
-                if let Some(id) = token_data.claims.id {
-                    dict.set_item("id", id)?;
-                }
                 dict.set_item("exp", token_data.claims.exp)?;
                 dict.set_item("ttl", token_data.claims.ttl)?;
                 dict.set_item("token", token_data.claims.token)?;
                 dict.set_item("jti", token_data.claims.jti)?;
 
-                for (key, value) in token_data.claims.extra {
+                for (key, value) in token_data.claims.payload {
                     let py_value = json_to_python(py, &value)?;
                     dict.set_item(key, py_value)?;
                 }
@@ -553,15 +540,15 @@ impl CipherToken {
     }
 
     /// token rotation - async
-    #[pyo3(signature = (refresh_token, extra_payload=None))]
+    #[pyo3(signature = (refresh_token, payload=None))]
     pub fn rotation_async<'a>(
         &'a self,
         py: Python<'a>,
         refresh_token: String,
-        extra_payload: Option<&PyDict>,
+        payload: Option<&PyDict>,
     ) -> PyResult<&'a PyAny> {
         let token_instance = self.clone_token();
-        let extra_payload_cloned = extra_payload.map(|dict| dict.into());
+        let payload_cloned = payload.map(|dict| dict.into());
 
         future_into_py(py, async move {
             let claims_dict = token_instance.decode_async_inner(&refresh_token).await?;
@@ -580,16 +567,8 @@ impl CipherToken {
                 ));
             }
 
-            let user_id: i128 = Python::with_gil(|py| {
-                claims_dict
-                    .as_ref(py)
-                    .get_item("id")?
-                    .ok_or_else(|| pyo3::exceptions::PyValueError::new_err("User ID not found"))?
-                    .extract()
-            })?;
-
-            let new_access = token_instance.access_async_inner(user_id, extra_payload_cloned.clone()).await?;
-            let new_refresh = token_instance.refresh_async_inner(user_id, extra_payload_cloned).await?;
+            let new_access = token_instance.access_async_inner(payload_cloned.clone()).await?;
+            let new_refresh = token_instance.refresh_async_inner(payload_cloned).await?;
 
             Ok((new_access, new_refresh))
         })
@@ -598,7 +577,7 @@ impl CipherToken {
 
 // Helper functions for async operations
 impl CipherToken {
-    fn clone_token(&self) -> CipherToken {
+    pub(crate) fn clone_token(&self) -> CipherToken {
         CipherToken {
             secret: self.secret.clone(),
             algorithm: self.algorithm,
@@ -607,10 +586,9 @@ impl CipherToken {
         }
     }
 
-    async fn access_async_inner(
+    pub(crate) async fn access_async_inner(
         &self,
-        user_id: i128,
-        extra_payload: Option<Py<PyDict>>,
+        payload: Option<Py<PyDict>>,
     ) -> PyResult<String> {
         let uuid = Uuid::new_v4();
         let exp = SystemTime::now()
@@ -619,28 +597,27 @@ impl CipherToken {
             .as_secs()
             + self.access_ttl;
 
-        let extra_map = if let Some(py_dict) = extra_payload {
+        let payload_map = if let Some(py_dict) = payload {
             Python::with_gil(|py| {
                 let dict = py_dict.as_ref(py);
-                let mut extra_map = Map::new();
+                let mut payload_map = Map::new();
                 for (key, value) in dict.iter() {
                     let key_str = key.extract::<String>()?;
                     let json_value = python_to_json(py, value)?;
-                    extra_map.insert(key_str, json_value);
+                    payload_map.insert(key_str, json_value);
                 }
-                Ok::<Map<String, Value>, PyErr>(extra_map)
+                Ok::<Map<String, Value>, PyErr>(payload_map)
             })?
         } else {
             Map::new()
         };
 
         let claims = Claims {
-            id: Some(user_id),
             exp: exp as usize,
             ttl: self.access_ttl as usize,
             token: "access".to_string(),
             jti: uuid.to_string(),
-            extra: extra_map,
+            payload: payload_map,
         };
         let algorithm = self.algorithm;
 
@@ -656,10 +633,9 @@ impl CipherToken {
         Ok(token)
     }
 
-    async fn refresh_async_inner(
+    pub(crate) async fn refresh_async_inner(
         &self,
-        user_id: i128,
-        extra_payload: Option<Py<PyDict>>,
+        payload: Option<Py<PyDict>>,
     ) -> PyResult<String> {
         let uuid = Uuid::new_v4();
         let exp = SystemTime::now()
@@ -668,28 +644,27 @@ impl CipherToken {
             .as_secs()
             + self.refresh_ttl;
 
-        let extra_map = if let Some(py_dict) = extra_payload {
+        let payload_map = if let Some(py_dict) = payload {
             Python::with_gil(|py| {
                 let dict = py_dict.as_ref(py);
-                let mut extra_map = Map::new();
+                let mut payload_map = Map::new();
                 for (key, value) in dict.iter() {
                     let key_str = key.extract::<String>()?;
                     let json_value = python_to_json(py, value)?;
-                    extra_map.insert(key_str, json_value);
+                    payload_map.insert(key_str, json_value);
                 }
-                Ok::<Map<String, Value>, PyErr>(extra_map)
+                Ok::<Map<String, Value>, PyErr>(payload_map)
             })?
         } else {
             Map::new()
         };
 
         let claims = Claims {
-            id: Some(user_id),
             exp: exp as usize,
             ttl: self.refresh_ttl as usize,
             token: "refresh".to_string(),
             jti: uuid.to_string(),
-            extra: extra_map,
+            payload: payload_map,
         };
         let algorithm = self.algorithm;
 
@@ -705,7 +680,7 @@ impl CipherToken {
         Ok(token)
     }
 
-    async fn decode_async_inner(&self, token: &str) -> PyResult<Py<PyDict>> {
+    pub(crate) async fn decode_async_inner(&self, token: &str) -> PyResult<Py<PyDict>> {
         let mut validation = Validation::new(self.algorithm);
         validation.validate_exp = true;
         validation.required_spec_claims.clear();
@@ -722,15 +697,12 @@ impl CipherToken {
 
         Python::with_gil(|py| {
             let dict = PyDict::new(py);
-            if let Some(id) = token_data.claims.id {
-                dict.set_item("id", id)?;
-            }
             dict.set_item("exp", token_data.claims.exp)?;
             dict.set_item("ttl", token_data.claims.ttl)?;
             dict.set_item("token", token_data.claims.token)?;
             dict.set_item("jti", token_data.claims.jti)?;
 
-            for (key, value) in token_data.claims.extra {
+            for (key, value) in token_data.claims.payload {
                 let py_value = json_to_python(py, &value)?;
                 dict.set_item(key, py_value)?;
             }
@@ -740,17 +712,17 @@ impl CipherToken {
 }
 
 // Helper functions
-async fn extra_map_from_py(extra_payload: Option<Py<PyDict>>) -> PyResult<Map<String, Value>> {
-    if let Some(py_dict) = extra_payload {
+async fn payload_map_from_py(payload: Option<Py<PyDict>>) -> PyResult<Map<String, Value>> {
+    if let Some(py_dict) = payload {
         Python::with_gil(|py| {
             let dict = py_dict.as_ref(py);
-            let mut extra_map = Map::new();
+            let mut payload_map = Map::new();
             for (key, value) in dict.iter() {
                 let key_str = key.extract::<String>()?;
                 let json_value = python_to_json(py, value)?;
-                extra_map.insert(key_str, json_value);
+                payload_map.insert(key_str, json_value);
             }
-            Ok(extra_map)
+            Ok(payload_map)
         })
     } else {
         Ok(Map::new())
@@ -915,6 +887,10 @@ fn ciphertoken(py: Python, m: &PyModule) -> PyResult<()> {
     // ---------------- ALGORITHMS MODULE ----------------
     let algo_mod = algorithms::register_algorithms_module(py)?;
     m.add_submodule(algo_mod.as_ref(py))?;
+
+    // ---------------- JWT MODULE ----------------
+    let jwt_mod = jwt::register_jwt_module(py)?;
+    m.add_submodule(jwt_mod.as_ref(py))?;
 
     Ok(())
 }
