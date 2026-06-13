@@ -4,8 +4,13 @@ Production topics for **CipherToken** — the next-generation token engine.
 
 ## Topics
 
-- [Async Usage](async.md) — Full async API with Tokio under the hood
-- [Security Best Practices](security.md) — Key management, rotation, algorithm selection
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-bolt: [Async Usage](async.md)
+
+-   :fontawesome-solid-shield: [Security Best Practices](security.md)
+
+</div>
 
 ---
 

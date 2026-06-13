@@ -14,13 +14,29 @@ ciphertoken/
 └── jwt                      # High-level JWT convenience functions
 ```
 
-| Module | Description | API Lookup |
-|--------|-------------|------------|
-| [`CipherToken`](ciphertoken.md) | Main class — sync and async methods | [⇗](api-lookup.md) |
-| [`secret`](secret.md) | HMAC secret and RSA key pair generation | [⇗](api-lookup.md) |
-| [`time`](time.md) | UNIX timestamp and TTL utilities | [⇗](api-lookup.md) |
-| [`utils`](utils.md) | Shared constants | [⇗](api-lookup.md) |
-| [`algorithms`](algorithms.md) | Algorithm constants | [⇗](api-lookup.md) |
-| [`jwt`](jwt.md) | High-level JWT helpers (sync + async) | [⇗](api-lookup.md) |
+<div class="grid cards" markdown>
+
+-   :fontawesome-solid-key: [CipherToken](ciphertoken.md)
+
+-   :fontawesome-solid-lock: [secret](secret.md)
+
+-   :fontawesome-solid-clock: [time](time.md)
+
+-   :fontawesome-solid-cog: [utils](utils.md)
+
+-   :fontawesome-solid-shield-halved: [algorithms](algorithms.md)
+
+-   :fontawesome-solid-file-code: [jwt](jwt.md)
+
+</div>
+
+| Module | API Lookup |
+|--------|-------------|
+| CipherToken | [⇗](api-lookup.md) |
+| secret | [⇗](api-lookup.md) |
+| time | [⇗](api-lookup.md) |
+| utils | [⇗](api-lookup.md) |
+| algorithms | [⇗](api-lookup.md) |
+| jwt | [⇗](api-lookup.md) |
 
 > **New here?** Start with the [Quick Start](../getting-started/quick-start.md).

@@ -6,6 +6,8 @@
 #
 # ============================================================================
 
+use_directory_urls = false
+
 [project]
 site_name = "CipherToken"
 
@@ -22,11 +24,11 @@ Copyright &copy; 2026 <a href="https://cipherunit.xyz/" target="_blank" rel="noo
 """
 
 nav = [
-    { "Get Started" = "getting-started/index.md" },
-    { "Installation" = "getting-started/installation.md" },
-    { "Quick Start" = "getting-started/quick-start.md" },
-    { "API Reference" = "reference/index.md" },
-    { "Advanced" = "advanced/index.md" },
+    { "Get Started" = "getting-started/index.md", icon = "fontawesome/solid/rocket" },
+    { "Installation" = "getting-started/installation.md", icon = "fontawesome/solid/download" },
+    { "Quick Start" = "getting-started/quick-start.md", icon = "fontawesome/solid/bolt" },
+    { "API Reference" = "reference/index.md", icon = "fontawesome/solid/book" },
+    { "Advanced" = "advanced/index.md", icon = "fontawesome/solid/gear" },
 ]
 
 [project.extra]
@@ -37,7 +39,7 @@ social = [
     ]
 
 [project.theme]
-logo = "./logo.png"
+logo = "logo.png"
 
 # Zensical allows you to override specific blocks, partials, or whole
 # templates as well as to define your own templates. To do this, uncomment

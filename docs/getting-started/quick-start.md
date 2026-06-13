@@ -20,7 +20,7 @@ token = CipherToken(
 ```
 
 !!! warning "Never hardcode secrets"
-    Use environment variables or a secret manager in production. See the [Security guide](../advanced/security.md).
+     Use environment variables or a secret manager in production. See the [Security guide](../advanced/security.md).
 
 ---
 

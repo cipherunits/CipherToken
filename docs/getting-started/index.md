@@ -50,8 +50,10 @@ Developed and maintained by **[Cipher-Unit](https://cipherunit.xyz/)**.
 
 <div class="grid cards" markdown>
 
-- [Installation](installation.md) — pip, poetry, and other package managers
-- [Quick Start](quick-start.md) — Your first tokens in under 2 minutes
-- [API Reference](../reference/index.md) — Complete API documentation
+-   :fontawesome-solid-download: [Installation](installation.md)
+
+-   :fontawesome-solid-bolt: [Quick Start](quick-start.md)
+
+-   :fontawesome-solid-book: [API Reference](../reference/index.md)
 
 </div>
