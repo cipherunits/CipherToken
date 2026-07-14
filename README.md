@@ -70,3 +70,15 @@ Please read the code of conduct and contribution guidelines before submitting. A
 ## License
 
 **MIT** — see [LICENSE](LICENSE) for details.
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<p align="center" style="margin-top: 100px;">
+  <b><i>Made with ❤️  for developers by CipherUnit</i></b>
+</p>
