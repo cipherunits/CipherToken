@@ -1,3 +1,10 @@
+---
+title: utils Module — Constants API
+description: Shared constants in CipherToken's utils module — token type identifiers and HMAC secret size limits.
+keywords: ciphertoken constants, token access refresh, hmac secret size
+image: https://cipherunits.github.io/CipherToken/logo.png
+---
+
 # API Reference — utils
 
 The `utils` module contains shared constants used throughout the library.

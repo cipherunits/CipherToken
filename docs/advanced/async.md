@@ -1,3 +1,10 @@
+---
+title: Async JWT in Python — FastAPI, Sanic, AioHTTP
+description: Use CipherToken's native async API for non-blocking JWT operations. Complete FastAPI authentication example with token rotation.
+keywords: async jwt python, fastapi jwt authentication, jwt fastapi example, tokio python, non-blocking jwt
+image: https://cipherunits.github.io/CipherToken/logo.png
+---
+
 # Advanced Guide — Async
 
 **CipherToken** provides full asynchronous support via `pyo3-asyncio` and the `tokio` runtime. All token operations have async equivalents.
@@ -59,10 +66,11 @@ async def refresh_token_endpoint(refresh_token: str):
     if not is_valid:
         raise HTTPException(status_code=401, detail="Invalid refresh token")
 
-    payload = await cipher.decode_async(refresh_token)
+    # Claims are returned flattened — payload keys live at the top level
+    claims = await cipher.decode_async(refresh_token)
     new_access, new_refresh = await cipher.rotation_async(
         refresh_token,
-        payload={"sub": payload["payload"]["sub"], "user_id": payload["payload"]["user_id"]},
+        payload={"sub": claims["sub"], "user_id": claims["user_id"]},
     )
 
     return {"access_token": new_access, "refresh_token": new_refresh}
@@ -107,7 +115,7 @@ asyncio.run(main())
 import asyncio
 from ciphertoken.secret import generate_rsa_keypair, generate_hmac_secret_async
 from ciphertoken import CipherToken
-from ciphertoken.algorithms import RS256
+from ciphertoken.algorithms import RS256, HS256
 from ciphertoken.time import minutes
 
 async def setup():
@@ -137,6 +145,9 @@ asyncio.run(setup())
 
 ```python
 import asyncio
+from ciphertoken import CipherToken
+from ciphertoken.algorithms import HS256
+from ciphertoken.time import minutes, days
 from ciphertoken.jwt import access_async, refresh_async, rotation_async
 
 async def main():

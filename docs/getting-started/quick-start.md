@@ -1,7 +1,7 @@
 ---
-title: Quick Start - CipherToken JWT Library
+title: Quick Start — JWT in Python in 2 Minutes
 description: Generate and manage JWTs in under 2 minutes. Learn to create, verify, rotate tokens and generate secure keys with CipherToken.
-keywords: jwt, quick-start, tutorial, python, rust, authentication, token
+keywords: python jwt example, create jwt python, verify jwt python, jwt refresh token, ciphertoken tutorial
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 

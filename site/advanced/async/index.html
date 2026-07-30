@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="High-performance Python cryptography and JWT library built with Rust. Fast token generation, validation, and key management for secure authentication.">
+        <meta name="description" content="Use CipherToken's native async API for non-blocking JWT operations. Complete FastAPI authentication example with token rotation.">
       
       
         <meta name="author" content="Cipher-Unit">
@@ -20,12 +20,12 @@
         
       
       
-      <link rel="icon" href="../../images/favicon.ico">
+      <link rel="icon" href="../../logo.png">
       <meta name="generator" content="zensical-0.0.46">
     
     
       
-        <title>Advanced Guide — Async - CipherToken</title>
+        <title>Async JWT in Python — FastAPI, Sanic, AioHTTP - CipherToken</title>
       
     
     
@@ -62,6 +62,52 @@
 
     
     
+    <meta name="keywords" content="async jwt python, fastapi jwt authentication, jwt fastapi example, tokio python, non-blocking jwt" />
+  
+    <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CipherToken" />
+  <meta property="og:title" content="Async JWT in Python — FastAPI, Sanic, AioHTTP" />
+  <meta property="og:description" content="Use CipherToken's native async API for non-blocking JWT operations. Complete FastAPI authentication example with token rotation." />
+  
+    <meta property="og:image" content="https://cipherunits.github.io/CipherToken/logo.png" />
+  
+  
+    <meta property="og:url" content="https://cipherunits.github.io/CipherToken/advanced/async/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+    <meta name="twitter:site" content="@CipherToken" />
+  
+  <meta name="twitter:title" content="Async JWT in Python — FastAPI, Sanic, AioHTTP" />
+  <meta name="twitter:description" content="Use CipherToken's native async API for non-blocking JWT operations. Complete FastAPI authentication example with token rotation." />
+  
+    <meta name="twitter:image" content="https://cipherunits.github.io/CipherToken/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CipherToken",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, Windows, macOS",
+    "programmingLanguage": ["Python", "Rust"],
+    "url": "https://cipherunits.github.io/CipherToken/",
+    "downloadUrl": "https://pypi.org/project/ciphertoken/",
+    "image": "https://cipherunits.github.io/CipherToken/logo.png",
+    "description": "High-performance Python JWT library built with Rust. Fast token creation, verification, rotation and key management.",
+    "license": "https://opensource.org/licenses/MIT",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Cipher-Unit",
+      "url": "https://cipherunit.xyz/"
+    }
+  }
+  </script>
+
   </head>
   
   
@@ -97,7 +143,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../getting-started/" title="CipherToken" class="md-header__button md-logo" aria-label="CipherToken" data-md-component="logo">
+    <a href="../.." title="CipherToken" class="md-header__button md-logo" aria-label="CipherToken" data-md-component="logo">
       
   <img src="../../logo.png" alt="CipherToken">
 
@@ -116,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Advanced Guide — Async
+              Async JWT in Python — FastAPI, Sanic, AioHTTP
             
           </span>
         </div>
@@ -205,7 +251,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../getting-started/" title="CipherToken" class="md-nav__button md-logo" aria-label="CipherToken" data-md-component="logo">
+    <a href="../.." title="CipherToken" class="md-nav__button md-logo" aria-label="CipherToken" data-md-component="logo">
       
   <img src="../../logo.png" alt="CipherToken">
 
@@ -226,6 +272,32 @@
     </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
     
       
       
@@ -312,6 +384,58 @@
   
   
     <li class="md-nav__item">
+      <a href="../../benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Benchmarks
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Comparison
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../reference/" class="md-nav__link">
         
   
@@ -346,6 +470,32 @@
     
   
   Advanced
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FAQ
 
     
   </span>
@@ -565,13 +715,14 @@
 </span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_valid</span><span class="p">:</span>
 </span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span> <span class="n">detail</span><span class="o">=</span><span class="s2">&quot;Invalid refresh token&quot;</span><span class="p">)</span>
 </span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="n">payload</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decode_async</span><span class="p">(</span><span class="n">refresh_token</span><span class="p">)</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">new_access</span><span class="p">,</span> <span class="n">new_refresh</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cipher</span><span class="o">.</span><span class="n">rotation_async</span><span class="p">(</span>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="n">refresh_token</span><span class="p">,</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">][</span><span class="s2">&quot;sub&quot;</span><span class="p">],</span> <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">][</span><span class="s2">&quot;user_id&quot;</span><span class="p">]},</span>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="p">)</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="n">new_access</span><span class="p">,</span> <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="n">new_refresh</span><span class="p">}</span>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="c1"># Claims are returned flattened — payload keys live at the top level</span>
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">claims</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cipher</span><span class="o">.</span><span class="n">decode_async</span><span class="p">(</span><span class="n">refresh_token</span><span class="p">)</span>
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">new_access</span><span class="p">,</span> <span class="n">new_refresh</span> <span class="o">=</span> <span class="k">await</span> <span class="n">cipher</span><span class="o">.</span><span class="n">rotation_async</span><span class="p">(</span>
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        <span class="n">refresh_token</span><span class="p">,</span>
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="n">claims</span><span class="p">[</span><span class="s2">&quot;sub&quot;</span><span class="p">],</span> <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="n">claims</span><span class="p">[</span><span class="s2">&quot;user_id&quot;</span><span class="p">]},</span>
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="p">)</span>
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;access_token&quot;</span><span class="p">:</span> <span class="n">new_access</span><span class="p">,</span> <span class="s2">&quot;refresh_token&quot;</span><span class="p">:</span> <span class="n">new_refresh</span><span class="p">}</span>
 </span></code></pre></div>
 <hr />
 <h2 id="direct-asyncio-usage">Direct <code>asyncio</code> Usage<a class="headerlink" href="#direct-asyncio-usage" title="Permanent link">&para;</a></h2>
@@ -605,7 +756,7 @@
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.secret</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_rsa_keypair</span><span class="p">,</span> <span class="n">generate_hmac_secret_async</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken</span><span class="w"> </span><span class="kn">import</span> <span class="n">CipherToken</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">RS256</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">RS256</span><span class="p">,</span> <span class="n">HS256</span>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">minutes</span>
 </span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">():</span>
@@ -631,21 +782,24 @@
 <hr />
 <h2 id="async-with-jwt-module">Async with <code>jwt</code> Module<a class="headerlink" href="#async-with-jwt-module" title="Permanent link">&para;</a></h2>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.jwt</span><span class="w"> </span><span class="kn">import</span> <span class="n">access_async</span><span class="p">,</span> <span class="n">refresh_async</span><span class="p">,</span> <span class="n">rotation_async</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">token</span> <span class="o">=</span> <span class="n">CipherToken</span><span class="p">(</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>        <span class="n">secret</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>        <span class="n">algorithm</span><span class="o">=</span><span class="n">HS256</span><span class="p">,</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">access_ttl</span><span class="o">=</span><span class="n">minutes</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">refresh_ttl</span><span class="o">=</span><span class="n">days</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="p">)</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">access_token</span> <span class="o">=</span> <span class="k">await</span> <span class="n">access_async</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">})</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="n">refresh_token</span> <span class="o">=</span> <span class="k">await</span> <span class="n">refresh_async</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">})</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">new_access</span><span class="p">,</span> <span class="n">new_refresh</span> <span class="o">=</span> <span class="k">await</span> <span class="n">rotation_async</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">refresh_token</span><span class="p">)</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken</span><span class="w"> </span><span class="kn">import</span> <span class="n">CipherToken</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">HS256</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">days</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.jwt</span><span class="w"> </span><span class="kn">import</span> <span class="n">access_async</span><span class="p">,</span> <span class="n">refresh_async</span><span class="p">,</span> <span class="n">rotation_async</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>    <span class="n">token</span> <span class="o">=</span> <span class="n">CipherToken</span><span class="p">(</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">secret</span><span class="o">=</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="n">algorithm</span><span class="o">=</span><span class="n">HS256</span><span class="p">,</span>
+</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="n">access_ttl</span><span class="o">=</span><span class="n">minutes</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="n">refresh_ttl</span><span class="o">=</span><span class="n">days</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="p">)</span>
+</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
+</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="n">access_token</span> <span class="o">=</span> <span class="k">await</span> <span class="n">access_async</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">})</span>
+</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="n">refresh_token</span> <span class="o">=</span> <span class="k">await</span> <span class="n">refresh_async</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;sub&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">})</span>
+</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="n">new_access</span><span class="p">,</span> <span class="n">new_refresh</span> <span class="o">=</span> <span class="k">await</span> <span class="n">rotation_async</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">refresh_token</span><span class="p">)</span>
+</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>
+</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 </span></code></pre></div>
 <hr />
 <h2 id="performance-notes">Performance Notes<a class="headerlink" href="#performance-notes" title="Permanent link">&para;</a></h2>
@@ -662,6 +816,9 @@
 
 
 
+
+  
+  
 
 
 

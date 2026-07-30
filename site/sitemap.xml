@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
       <url>
+        <loc>https://cipherunits.github.io/CipherToken/</loc>
+      </url>
+      <url>
         <loc>https://cipherunits.github.io/CipherToken/getting-started/</loc>
       </url>
       <url>
@@ -10,9 +13,18 @@
         <loc>https://cipherunits.github.io/CipherToken/getting-started/quick-start/</loc>
       </url>
       <url>
+        <loc>https://cipherunits.github.io/CipherToken/benchmarks/</loc>
+      </url>
+      <url>
+        <loc>https://cipherunits.github.io/CipherToken/comparison/</loc>
+      </url>
+      <url>
         <loc>https://cipherunits.github.io/CipherToken/reference/</loc>
       </url>
       <url>
         <loc>https://cipherunits.github.io/CipherToken/advanced/</loc>
+      </url>
+      <url>
+        <loc>https://cipherunits.github.io/CipherToken/faq/</loc>
       </url>
 </urlset>

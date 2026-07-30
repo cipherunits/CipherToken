@@ -1,3 +1,10 @@
+---
+title: secret Module — Key Generation API
+description: Generate HMAC secrets and RSA key pairs with CipherToken's secret module. Secure random keys in PKCS#8 PEM format, sync and async.
+keywords: generate hmac secret python, generate rsa key pair python, jwt secret key, pkcs8 pem python
+image: https://cipherunits.github.io/CipherToken/logo.png
+---
+
 # API Reference — secret
 
 The `secret` module provides utilities for cryptographic key generation.
@@ -82,7 +89,9 @@ private_key, public_key = generate_rsa_keypair(bits=2048)
 
 | Parameter | Type | Default | Description |
 |-----------|------|---------|-------------|
-| `bits` | `Optional[int]` | `2048` | Key size. Must be 2048, 3072, or 4096 |
+| `bits` | `Optional[int]` | `2048` | Key size in bits. Minimum 2048 |
+
+**Raises:** `ValueError` if `bits` is less than 2048.
 
 **Returns:**
 
@@ -92,4 +101,4 @@ private_key, public_key = generate_rsa_keypair(bits=2048)
 | `1` | `str` | RSA public key in PKCS#8 PEM format |
 
 !!! tip "Recommended Key Sizes"
-    Use **2048-bit** keys for most use cases. Use **4096-bit** keys for maximum security requirements. **1024-bit** and **3072-bit** are not supported.
+    Use **2048-bit** keys for most use cases and **3072-bit** or **4096-bit** keys for maximum security requirements. Keys smaller than 2048 bits are rejected. Note that key generation time grows steeply with size.

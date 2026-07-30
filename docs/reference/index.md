@@ -1,7 +1,7 @@
 ---
-title: API Reference - CipherToken Documentation
-description: Complete API reference for CipherToken modules: CipherToken, secret, time, utils, algorithms, and jwt. Built with Rust for Python.
-keywords: api, documentation, jwt, python, rust, reference, cryptography
+title: API Reference
+description: Complete API reference for CipherToken modules — CipherToken, secret, time, utils, algorithms, and jwt. Built with Rust for Python.
+keywords: ciphertoken api reference, python jwt api, jwt documentation, token api
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 
@@ -37,13 +37,6 @@ ciphertoken/
 
 </div>
 
-| Module | API Lookup |
-|--------|-------------|
-| CipherToken | [⇗](api-lookup.md) |
-| secret | [⇗](api-lookup.md) |
-| time | [⇗](api-lookup.md) |
-| utils | [⇗](api-lookup.md) |
-| algorithms | [⇗](api-lookup.md) |
-| jwt | [⇗](api-lookup.md) |
+Looking for a specific method or constant? Use the [API Lookup index](api-lookup.md) — a single searchable page listing every symbol with its signature.
 
 > **New here?** Start with the [Quick Start](../getting-started/quick-start.md).

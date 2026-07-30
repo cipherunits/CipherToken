@@ -1,7 +1,7 @@
 ---
-title: JWT Module API Reference
-description: High-level JWT convenience functions for access, refresh, and rotation operations. Built with Rust for Python.
-keywords: jwt, api, python, rust, token, authentication
+title: jwt Module — Convenience Functions API
+description: High-level JWT convenience functions for access, refresh, and rotation operations — sync and async. Built with Rust for Python.
+keywords: jwt module python, access token function, refresh token function, token rotation python
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 

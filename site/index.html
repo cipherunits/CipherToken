@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Fast Python JWT library built with Rust. Secure token generation, validation, and key management for authentication systems.">
+        <meta name="description" content="CipherToken is a high-performance Python JWT library built with Rust. Up to 6x faster than PyJWT, with async support, key generation, and token rotation.">
       
       
         <meta name="author" content="Cipher-Unit">
@@ -16,16 +16,18 @@
       
       
       
+        <link rel="next" href="./getting-started/">
+      
       
         
       
       
-      <link rel="icon" href="./images/favicon.ico">
+      <link rel="icon" href="./logo.png">
       <meta name="generator" content="zensical-0.0.46">
     
     
       
-        <title>CipherToken - High-performance JWT and Cryptography Library - CipherToken</title>
+        <title>Fast Python JWT Library Built with Rust - CipherToken</title>
       
     
     
@@ -62,6 +64,52 @@
 
     
     
+    <meta name="keywords" content="python jwt library, fast jwt python, rust jwt, jwt token python, pyjwt alternative, jwt authentication python, ciphertoken" />
+  
+    <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CipherToken" />
+  <meta property="og:title" content="Fast Python JWT Library Built with Rust" />
+  <meta property="og:description" content="CipherToken is a high-performance Python JWT library built with Rust. Up to 6x faster than PyJWT, with async support, key generation, and token rotation." />
+  
+    <meta property="og:image" content="https://cipherunits.github.io/CipherToken/logo.png" />
+  
+  
+    <meta property="og:url" content="https://cipherunits.github.io/CipherToken/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+    <meta name="twitter:site" content="@CipherToken" />
+  
+  <meta name="twitter:title" content="Fast Python JWT Library Built with Rust" />
+  <meta name="twitter:description" content="CipherToken is a high-performance Python JWT library built with Rust. Up to 6x faster than PyJWT, with async support, key generation, and token rotation." />
+  
+    <meta name="twitter:image" content="https://cipherunits.github.io/CipherToken/logo.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CipherToken",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, Windows, macOS",
+    "programmingLanguage": ["Python", "Rust"],
+    "url": "https://cipherunits.github.io/CipherToken/",
+    "downloadUrl": "https://pypi.org/project/ciphertoken/",
+    "image": "https://cipherunits.github.io/CipherToken/logo.png",
+    "description": "High-performance Python JWT library built with Rust. Fast token creation, verification, rotation and key management.",
+    "license": "https://opensource.org/licenses/MIT",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Cipher-Unit",
+      "url": "https://cipherunit.xyz/"
+    }
+  }
+  </script>
+
   </head>
   
   
@@ -81,7 +129,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ciphertoken" class="md-skip">
+        <a href="#ciphertoken-fast-python-jwt-library-built-with-rust" class="md-skip">
           Skip to content
         </a>
       
@@ -97,7 +145,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="./getting-started/" title="CipherToken" class="md-header__button md-logo" aria-label="CipherToken" data-md-component="logo">
+    <a href="" title="CipherToken" class="md-header__button md-logo" aria-label="CipherToken" data-md-component="logo">
       
   <img src="./logo.png" alt="CipherToken">
 
@@ -116,7 +164,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              CipherToken - High-performance JWT and Cryptography Library
+              Fast Python JWT Library Built with Rust
             
           </span>
         </div>
@@ -205,7 +253,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="./getting-started/" title="CipherToken" class="md-nav__button md-logo" aria-label="CipherToken" data-md-component="logo">
+    <a href="" title="CipherToken" class="md-nav__button md-logo" aria-label="CipherToken" data-md-component="logo">
       
   <img src="./logo.png" alt="CipherToken">
 
@@ -226,6 +274,134 @@
     </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Home
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Quick Example
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-ciphertoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Why CipherToken?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Performance at a Glance
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broad-platform-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Broad Platform Support
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Get Started
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
     
       
       
@@ -312,6 +488,58 @@
   
   
     <li class="md-nav__item">
+      <a href="./benchmarks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Benchmarks
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  Comparison
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="./reference/" class="md-nav__link">
         
   
@@ -357,6 +585,32 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  FAQ
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -374,6 +628,11 @@
                       
                     
                     
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
                   
                   <div class="md-sidebar__inner">
                     
@@ -385,6 +644,69 @@
   
     
   
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Quick Example
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-ciphertoken" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Why CipherToken?
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Performance at a Glance
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#broad-platform-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Broad Platform Support
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Get Started
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -402,99 +724,47 @@
   
 
 
-<h1 id="ciphertoken">CipherToken<a class="headerlink" href="#ciphertoken" title="Permanent link">&para;</a></h1>
+<h1 id="ciphertoken-fast-python-jwt-library-built-with-rust">CipherToken — Fast Python JWT Library Built with Rust<a class="headerlink" href="#ciphertoken-fast-python-jwt-library-built-with-rust" title="Permanent link">&para;</a></h1>
 <p><strong>CipherToken</strong> is a next-generation token engine for developers who demand speed, security, and reliability. Unlike conventional JWT libraries, CipherToken delivers a complete token lifecycle — from creation and decoding to rotation and expiry tracking — all backed by the raw performance of <strong>Rust</strong>.</p>
-<hr />
-<h1 id="ciphertoken-benchmark">CipherToken Benchmark<a class="headerlink" href="#ciphertoken-benchmark" title="Permanent link">&para;</a></h1>
-<h2 id="fast-python-jwt-library-benchmark">Fast Python JWT Library Benchmark<a class="headerlink" href="#fast-python-jwt-library-benchmark" title="Permanent link">&para;</a></h2>
-<p>CipherToken is a high-performance Python token library designed for applications that require fast token creation and verification with minimal overhead.</p>
-<p>This benchmark compares CipherToken against popular Python JWT libraries using the HS256 algorithm.</p>
-<h2 id="benchmark-summary">Benchmark Summary<a class="headerlink" href="#benchmark-summary" title="Permanent link">&para;</a></h2>
-<p>🏆 <strong>CipherToken achieved the highest performance in every benchmark category tested.</strong></p>
-<table>
-<thead>
-<tr>
-<th>Library</th>
-<th style="text-align: right;">Token Creation (ops/sec)</th>
-<th style="text-align: right;">Token Verification (ops/sec)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>CipherToken</strong></td>
-<td style="text-align: right;"><strong>587,156</strong></td>
-<td style="text-align: right;"><strong>244,500</strong></td>
-</tr>
-<tr>
-<td>PyJWT</td>
-<td style="text-align: right;">101,591</td>
-<td style="text-align: right;">35,928</td>
-</tr>
-<tr>
-<td>python-jose</td>
-<td style="text-align: right;">103,861</td>
-<td style="text-align: right;">27,638</td>
-</tr>
-</tbody>
-</table>
-<h2 id="performance-advantage">Performance Advantage<a class="headerlink" href="#performance-advantage" title="Permanent link">&para;</a></h2>
-<h3 id="token-creation">Token Creation<a class="headerlink" href="#token-creation" title="Permanent link">&para;</a></h3>
-<ul>
-<li>CipherToken is <strong>5.78x faster</strong> than PyJWT.</li>
-<li>CipherToken is <strong>5.65x faster</strong> than python-jose.</li>
-</ul>
-<h3 id="token-verification">Token Verification<a class="headerlink" href="#token-verification" title="Permanent link">&para;</a></h3>
-<ul>
-<li>CipherToken is <strong>6.80x faster</strong> than PyJWT.</li>
-<li>CipherToken is <strong>8.85x faster</strong> than python-jose.</li>
-</ul>
-<h2 id="benchmark-environment">Benchmark Environment<a class="headerlink" href="#benchmark-environment" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Python 3.14</li>
-<li>HS256 algorithm</li>
-<li>100,000 iterations per benchmark</li>
-<li>Average of 5 runs</li>
-<li>Identical payload for all libraries</li>
-</ul>
-<h3 id="payload">Payload<a class="headerlink" href="#payload" title="Permanent link">&para;</a></h3>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="p">{</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">123</span><span class="p">,</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;ehsan&quot;</span><span class="p">,</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="p">}</span>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>ciphertoken
 </span></code></pre></div>
-<h2 id="why-ciphertoken-is-faster">Why CipherToken Is Faster<a class="headerlink" href="#why-ciphertoken-is-faster" title="Permanent link">&para;</a></h2>
-<p>CipherToken is designed with performance as a primary goal.</p>
-<p>Key optimizations include:</p>
+<div class="grid cards">
 <ul>
-<li>Minimal runtime overhead</li>
-<li>Efficient token generation</li>
-<li>Optimized token verification</li>
-<li>Modern implementation focused on high throughput</li>
-<li>Suitable for APIs, authentication services, and microservices</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M0 256a256 256 0 1 1 512 0 256 256 0 1 1-512 0M288 96a32 32 0 1 0-64 0 32 32 0 1 0 64 0m-32 320c35.3 0 64-28.7 64-64 0-16.2-6-31.1-16-42.3l69.5-138.9c5.9-11.9 1.1-26.3-10.7-32.2s-26.3-1.1-32.2 10.7l-69.5 138.9c-1.7-.1-3.4-.2-5.1-.2-35.3 0-64 28.7-64 64s28.7 64 64 64m-80-272a32 32 0 1 0-64 0 32 32 0 1 0 64 0M96 288a32 32 0 1 0 0-64 32 32 0 1 0 0 64m352-32a32 32 0 1 0-64 0 32 32 0 1 0 64 0"/></svg></span> <strong>Up to 6x faster</strong> than PyJWT and python-jose — <a href="benchmarks/">see benchmarks</a></p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M338.8-9.9c11.9 8.6 16.3 24.2 10.9 37.8L271.3 224H416c13.5 0 25.5 8.4 30.1 21.1s.7 26.9-9.6 35.5l-288 240c-11.3 9.4-27.4 9.9-39.3 1.3s-16.3-24.2-10.9-37.8L176.7 288H32c-13.5 0-25.5-8.4-30.1-21.1s-.7-26.9 9.6-35.5l288-240c11.3-9.4 27.4-9.9 39.3-1.3"/></svg></span> <strong>Fully async</strong> — every operation has an async twin, backed by Tokio</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0 160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24v-40h40c13.3 0 24-10.7 24-24v-40h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3m40-256a40 40 0 1 1 0 80 40 40 0 1 1 0-80"/></svg></span> <strong>Built-in key generation</strong> — HMAC secrets and RSA key pairs from Python</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M65.9 228.5C79.2 135.5 159.3 64 256 64c53 0 101 21.5 135.8 56.2l.6.6 7.6 7.2h-47.9c-17.7 0-32 14.3-32 32s14.3 32 32 32h128c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v53.4l-11.3-10.7C390.5 28.6 326.5 0 256 0 127 0 20.3 95.4 2.6 219.5c-2.5 17.5 9.6 33.7 27.1 36.2s33.7-9.7 36.2-27.1zm443.5 64c2.5-17.5-9.7-33.7-27.1-36.2s-33.7 9.7-36.2 27.1c-13.3 93-93.4 164.5-190.1 164.5-53 0-101-21.5-135.8-56.2l-.6-.6-7.6-7.2h47.9c17.7 0 32-14.3 32-32s-14.3-32-32-32L32 320c-8.5 0-16.7 3.4-22.7 9.5S-.1 343.7 0 352.3l1 127c.1 17.7 14.6 31.9 32.3 31.7s31.9-14.6 31.7-32.3l-.4-51.5 10.7 10.1C121.6 483.4 185.5 512 256 512c129 0 235.7-95.4 253.4-219.5"/></svg></span> <strong>Complete lifecycle</strong> — create, verify, decode, inspect, rotate, track expiry</p>
+</li>
 </ul>
-<h2 id="real-world-benefits">Real-World Benefits<a class="headerlink" href="#real-world-benefits" title="Permanent link">&para;</a></h2>
-<p>Higher throughput means:</p>
-<ul>
-<li>Faster API responses</li>
-<li>Lower CPU usage</li>
-<li>Better scalability</li>
-<li>More requests handled per server</li>
-<li>Reduced infrastructure costs</li>
-</ul>
-<h2 id="benchmark-notes">Benchmark Notes<a class="headerlink" href="#benchmark-notes" title="Permanent link">&para;</a></h2>
-<p>The benchmark was executed on the same machine under identical conditions.</p>
-<p>Results may vary depending on:</p>
-<ul>
-<li>Hardware</li>
-<li>Python version</li>
-<li>Payload size</li>
-<li>Selected algorithm</li>
-<li>Application workload</li>
-</ul>
-<p>However, the benchmark consistently showed CipherToken outperforming the compared libraries in both token creation and verification workloads.</p>
-<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
-<p>For applications requiring fast token operations, CipherToken demonstrated the strongest performance in this benchmark, achieving significantly higher throughput than PyJWT and python-jose while maintaining a simple developer experience.</p>
+</div>
+<hr />
+<h2 id="quick-example">Quick Example<a class="headerlink" href="#quick-example" title="Permanent link">&para;</a></h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken</span><span class="w"> </span><span class="kn">import</span> <span class="n">CipherToken</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">HS256</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">days</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">token</span> <span class="o">=</span> <span class="n">CipherToken</span><span class="p">(</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">secret</span><span class="o">=</span><span class="s2">&quot;your-strong-secret-key&quot;</span><span class="p">,</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">algorithm</span><span class="o">=</span><span class="n">HS256</span><span class="p">,</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">access_ttl</span><span class="o">=</span><span class="n">minutes</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="n">refresh_ttl</span><span class="o">=</span><span class="n">days</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="n">access_token</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">access</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">refresh_token</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">refresh</span><span class="p">(</span><span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">new_access</span><span class="p">,</span> <span class="n">new_refresh</span> <span class="o">=</span> <span class="n">token</span><span class="o">.</span><span class="n">rotation</span><span class="p">(</span><span class="n">refresh_token</span><span class="p">)</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">access_token</span><span class="p">))</span>  <span class="c1"># True</span>
+</span></code></pre></div>
+<p>Ready for more? Follow the <a href="getting-started/quick-start/">Quick Start guide</a>.</p>
+<hr />
 <h2 id="why-ciphertoken">Why CipherToken?<a class="headerlink" href="#why-ciphertoken" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -537,36 +807,52 @@
 </tr>
 </tbody>
 </table>
+<p>See the full <a href="comparison/">comparison with PyJWT and python-jose</a>.</p>
 <hr />
-<h2 id="quick-install">Quick Install<a class="headerlink" href="#quick-install" title="Permanent link">&para;</a></h2>
-<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>pip<span class="w"> </span>install<span class="w"> </span>ciphertoken
-</span></code></pre></div>
+<h2 id="performance-at-a-glance">Performance at a Glance<a class="headerlink" href="#performance-at-a-glance" title="Permanent link">&para;</a></h2>
+<p>CipherToken outperformed every Python JWT library we tested, in every category:</p>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th style="text-align: right;">Token Creation (ops/sec)</th>
+<th style="text-align: right;">Token Verification (ops/sec)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CipherToken</strong></td>
+<td style="text-align: right;"><strong>587,156</strong></td>
+<td style="text-align: right;"><strong>244,500</strong></td>
+</tr>
+<tr>
+<td>PyJWT</td>
+<td style="text-align: right;">101,591</td>
+<td style="text-align: right;">35,928</td>
+</tr>
+<tr>
+<td>python-jose</td>
+<td style="text-align: right;">103,861</td>
+<td style="text-align: right;">27,638</td>
+</tr>
+</tbody>
+</table>
+<p>Full methodology, environment, and analysis on the <a href="benchmarks/">Benchmarks page</a>.</p>
 <hr />
-<h2 id="quick-example">Quick Example<a class="headerlink" href="#quick-example" title="Permanent link">&para;</a></h2>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken</span><span class="w"> </span><span class="kn">import</span> <span class="n">CipherToken</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.algorithms</span><span class="w"> </span><span class="kn">import</span> <span class="n">HS256</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.time</span><span class="w"> </span><span class="kn">import</span> <span class="n">minutes</span><span class="p">,</span> <span class="n">days</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ciphertoken.jwt</span><span class="w"> </span><span class="kn">import</span> <span class="n">access</span><span class="p">,</span> <span class="n">refresh</span><span class="p">,</span> <span class="n">rotation</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="n">token</span> <span class="o">=</span> <span class="n">CipherToken</span><span class="p">(</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">secret</span><span class="o">=</span><span class="s2">&quot;your-strong-secret-key&quot;</span><span class="p">,</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">algorithm</span><span class="o">=</span><span class="n">HS256</span><span class="p">,</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="n">access_ttl</span><span class="o">=</span><span class="n">minutes</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    <span class="n">refresh_ttl</span><span class="o">=</span><span class="n">days</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="p">)</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="n">access_token</span> <span class="o">=</span> <span class="n">access</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">refresh_token</span> <span class="o">=</span> <span class="n">refresh</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">payload</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">})</span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">new_access</span><span class="p">,</span> <span class="n">new_refresh</span> <span class="o">=</span> <span class="n">rotation</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">refresh_token</span><span class="p">)</span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="nb">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">verify</span><span class="p">(</span><span class="n">access_token</span><span class="p">))</span>  <span class="c1"># True</span>
-</span></code></pre></div>
+<h2 id="broad-platform-support">Broad Platform Support<a class="headerlink" href="#broad-platform-support" title="Permanent link">&para;</a></h2>
+<p>One <code>pip install</code> works everywhere — prebuilt wheels ship for:</p>
+<ul>
+<li><strong>Linux</strong> — x86_64, ARM64, ARMv7, s390x, ppc64le (glibc and musl/Alpine)</li>
+<li><strong>Windows</strong> — x64, x86, ARM64</li>
+<li><strong>macOS</strong> — Intel and Apple Silicon</li>
+<li><strong>Python</strong> — CPython 3.8+ (one ABI3 wheel covers them all) and PyPy 3.9/3.10</li>
+</ul>
 <hr />
 <h2 id="get-started">Get Started<a class="headerlink" href="#get-started" title="Permanent link">&para;</a></h2>
 <div class="grid cards">
 <ul>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v210.7l-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7zM64 320c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64v-32c0-35.3-28.7-64-64-64h-46.9l-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48"/></svg></span> <a href="getting-started/installation/">Installation</a> — pip, poetry, pdm, and more</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32v210.7l-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7zM64 320c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64v-32c0-35.3-28.7-64-64-64h-46.9l-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48"/></svg></span> <a href="getting-started/installation/">Installation</a> — pip, uv, poetry, pdm, and more</p>
 </li>
 <li>
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M338.8-9.9c11.9 8.6 16.3 24.2 10.9 37.8L271.3 224H416c13.5 0 25.5 8.4 30.1 21.1s.7 26.9-9.6 35.5l-288 240c-11.3 9.4-27.4 9.9-39.3 1.3s-16.3-24.2-10.9-37.8L176.7 288H32c-13.5 0-25.5-8.4-30.1-21.1s-.7-26.9 9.6-35.5l288-240c11.3-9.4 27.4-9.9 39.3-1.3"/></svg></span> <a href="getting-started/quick-start/">Quick Start</a> — Your first tokens in under 2 minutes</p>
@@ -575,7 +861,13 @@
 <p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M384 512H96c-53 0-96-43-96-96V96C0 43 43 0 96 0h304c26.5 0 48 21.5 48 48v288c0 20.9-13.4 38.7-32 45.3V448c17.7 0 32 14.3 32 32s-14.3 32-32 32zM96 384c-17.7 0-32 14.3-32 32s14.3 32 32 32h256v-64zm32-232c0 13.3 10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24H152c-13.3 0-24 10.7-24 24m24 72c-13.3 0-24 10.7-24 24s10.7 24 24 24h176c13.3 0 24-10.7 24-24s-10.7-24-24-24z"/></svg></span> <a href="reference/">API Reference</a> — Complete module documentation</p>
 </li>
 <li>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M195.1 9.5c3-14.8 16.1-25.5 31.3-25.5h59.8c15.2 0 28.3 10.7 31.3 25.5l14.5 70c14.1 6 27.3 13.7 39.3 22.8l67.8-22.5c14.4-4.8 30.2 1.2 37.8 14.4l29.9 51.8c7.6 13.2 4.9 29.8-6.5 39.9L447 233.3c.9 7.4 1.3 15 1.3 22.7s-.5 15.3-1.3 22.7l53.4 47.5c11.4 10.1 14 26.8 6.5 39.9L477 417.9c-7.6 13.1-23.4 19.2-37.8 14.4l-67.8-22.5c-12.1 9.1-25.3 16.7-39.3 22.8l-14.4 69.9c-3.1 14.9-16.2 25.5-31.3 25.5h-59.8c-15.2 0-28.3-10.7-31.3-25.5l-14.4-69.9c-14.1-6-27.2-13.7-39.3-22.8l-68.1 22.5c-14.4 4.8-30.2-1.2-37.8-14.4L5.8 366.1c-7.6-13.2-4.9-29.8 6.5-39.9l53.4-47.5c-.9-7.4-1.3-15-1.3-22.7s.5-15.3 1.3-22.7l-53.4-47.5C.9 175.7-1.7 159 5.8 145.9l29.9-51.8c7.6-13.2 23.4-19.2 37.8-14.4l67.8 22.5c12.1-9.1 25.3-16.7 39.3-22.8zM256.3 336a80 80 0 1 0-.6-160 80 80 0 1 0 .6 160"/></svg></span> <a href="advanced/">Advanced Guide</a> — Production best practices</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M195.1 9.5c3-14.8 16.1-25.5 31.3-25.5h59.8c15.2 0 28.3 10.7 31.3 25.5l14.5 70c14.1 6 27.3 13.7 39.3 22.8l67.8-22.5c14.4-4.8 30.2 1.2 37.8 14.4l29.9 51.8c7.6 13.2 4.9 29.8-6.5 39.9L447 233.3c.9 7.4 1.3 15 1.3 22.7s-.5 15.3-1.3 22.7l53.4 47.5c11.4 10.1 14 26.8 6.5 39.9L477 417.9c-7.6 13.1-23.4 19.2-37.8 14.4l-67.8-22.5c-12.1 9.1-25.3 16.7-39.3 22.8l-14.4 69.9c-3.1 14.9-16.2 25.5-31.3 25.5h-59.8c-15.2 0-28.3-10.7-31.3-25.5l-14.4-69.9c-14.1-6-27.2-13.7-39.3-22.8l-68.1 22.5c-14.4 4.8-30.2-1.2-37.8-14.4L5.8 366.1c-7.6-13.2-4.9-29.8 6.5-39.9l53.4-47.5c-.9-7.4-1.3-15-1.3-22.7s.5-15.3 1.3-22.7l-53.4-47.5C.9 175.7-1.7 159 5.8 145.9l29.9-51.8c7.6-13.2 23.4-19.2 37.8-14.4l67.8 22.5c12.1-9.1 25.3-16.7 39.3-22.8zM256.3 336a80 80 0 1 0-.6-160 80 80 0 1 0 .6 160"/></svg></span> <a href="advanced/">Advanced Guide</a> — Async usage and security best practices</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m0-336c-17.7 0-32 14.3-32 32 0 13.3-10.7 24-24 24s-24-10.7-24-24c0-44.2 35.8-80 80-80s80 35.8 80 80c0 47.2-36 67.2-56 74.5v3.8c0 13.3-10.7 24-24 24s-24-10.7-24-24v-8.1c0-20.5 14.8-35.2 30.1-40.2 6.4-2.1 13.2-5.5 18.2-10.3 4.3-4.2 7.7-10 7.7-19.6 0-17.7-14.3-32-32-32zm-32 192a32 32 0 1 1 64 0 32 32 0 1 1-64 0"/></svg></span> <a href="faq/">FAQ</a> — Frequently asked questions</p>
+</li>
+<li>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M384 32h128c17.7 0 32 14.3 32 32s-14.3 32-32 32H398.4c-5.2 25.8-22.9 47.1-46.4 57.3V448h160c17.7 0 32 14.3 32 32s-14.3 32-32 32H128c-17.7 0-32-14.3-32-32s14.3-32 32-32h160V153.3c-23.5-10.3-41.2-31.6-46.4-57.3H128c-17.7 0-32-14.3-32-32s14.3-32 32-32h128c14.6-19.4 37.8-32 64-32s49.4 12.6 64 32m55.6 288h144.8L512 195.8zm72.4 96c-62.9 0-115.2-34-126-78.9-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8L631.3 305c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9M126.8 195.8 54.4 320h144.9zM.9 337.1c-2.6-11 1-22.3 6.7-32.1l95.2-163.2c5-8.6 14.2-13.8 24.1-13.8s19.1 5.3 24.1 13.8L246.2 305c5.7 9.8 9.3 21.1 6.7 32.1-10.8 44.8-63.1 78.9-126 78.9S11.7 382 .9 337.1"/></svg></span> <a href="comparison/">Comparison</a> — CipherToken vs PyJWT vs python-jose</p>
 </li>
 </ul>
 </div>

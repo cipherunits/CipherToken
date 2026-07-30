@@ -1,3 +1,10 @@
+---
+title: algorithms Module — Signing Algorithms API
+description: All JWT signing algorithms supported by CipherToken — HS256, HS384, HS512, RS256, ES256, PS256, EdDSA and more, with selection guidance.
+keywords: jwt algorithms python, hs256 vs rs256, es256 python, eddsa jwt, jwt signing algorithm
+image: https://cipherunits.github.io/CipherToken/logo.png
+---
+
 # API Reference — algorithms
 
 The `algorithms` module defines constants for all supported JWT signing algorithms.

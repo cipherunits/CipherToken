@@ -1,7 +1,7 @@
 ---
-title: Installation - CipherToken
-description: Install CipherToken, the high-performance Python JWT library built with Rust. Supports pip, poetry, uv, pdm, and pipx.
-keywords: jwt, install, python, rust, cryptography, pip, poetry, pipx
+title: Installation
+description: Install CipherToken, the high-performance Python JWT library built with Rust. Prebuilt wheels for Linux, Windows, macOS, ARM, Alpine, and PyPy.
+keywords: install ciphertoken, pip install jwt, python jwt install, poetry, uv, pipx, alpine wheel, arm64 wheel
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 
@@ -13,8 +13,9 @@ Choose your preferred method to install **CipherToken**.
 
 ## System Requirements
 
-- Python **3.8** or higher
-- A C compiler (GCC, Clang, or MSVC) for builds from source
+- Python **3.8** or higher (CPython) or PyPy 3.9/3.10
+- Nothing else — prebuilt wheels ship for all major platforms
+- The **Rust toolchain**, only if you build from source
 
 ---
 
@@ -52,13 +53,30 @@ Choose your preferred method to install **CipherToken**.
 
 ---
 
+## Supported Platforms
 
+Prebuilt wheels are published to PyPI for every release:
+
+| Platform | Architectures |
+|----------|---------------|
+| **Linux** (glibc, manylinux) | x86_64, x86, ARM64, ARMv7, s390x, ppc64le |
+| **Linux** (musl / Alpine) | x86_64, x86, ARM64, ARMv7 |
+| **Windows** | x64, x86, ARM64 |
+| **macOS** | Intel (x86_64), Apple Silicon (ARM64) |
+| **PyPy 3.9 / 3.10** | Linux, Windows, macOS |
+
+!!! info "One wheel, every Python version"
+    CipherToken wheels use the **stable ABI (abi3)** — a single wheel works on
+    CPython 3.8 through the latest release, so new Python versions are
+    supported on day one.
+
+On any other platform, `pip` automatically falls back to building from source (see below).
 
 ---
 
 ## Building from Source
 
-For the latest unreleased code:
+For unsupported platforms or the latest unreleased code:
 
 ```bash
 git clone https://github.com/cipherunits/CipherToken.git
@@ -69,6 +87,8 @@ maturin develop --release
 
 !!! tip
     `maturin develop --release` compiles the Rust extension and installs it into your active Python environment. Use `--release` for production-grade performance.
+
+Building from source requires the [Rust toolchain](https://rustup.rs/) (`rustc` and `cargo`).
 
 ---
 
@@ -94,9 +114,12 @@ Make sure `pip` is up to date:
 pip install --upgrade pip setuptools wheel
 ```
 
-**Build errors on Linux**
+**Build errors on Linux (source builds only)**
 
 ```bash
+# Install Rust first
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
 # Debian / Ubuntu
 sudo apt install build-essential python3-dev
 
@@ -104,9 +127,9 @@ sudo apt install build-essential python3-dev
 sudo dnf install gcc python3-devel
 ```
 
-**Build errors on Windows**
+**Build errors on Windows (source builds only)**
 
-Install **Microsoft C++ Build Tools** or Visual Studio with the "Desktop development with C++" workload.
+Install the [Rust toolchain](https://rustup.rs/) and **Microsoft C++ Build Tools** (or Visual Studio with the "Desktop development with C++" workload).
 
 ---
 

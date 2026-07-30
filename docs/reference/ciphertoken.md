@@ -1,7 +1,7 @@
 ---
-title: CipherToken API Reference
+title: CipherToken Class — API Reference
 description: Complete API reference for the CipherToken class. Methods for signing, verification, decoding, rotation, and expiry inspection.
-keywords: ciphertoken, api, jwt, python, rust, reference
+keywords: ciphertoken class, jwt api python, token verify decode rotate, ciphertoken methods
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 
@@ -194,7 +194,7 @@ new_access, new_refresh = rotation(ct, old_refresh_token, payload={"user_id": 42
 
 ---
 
-### `rotation_async(refresh_token: str, payload: Optional[Dict[str, Any]] = None) -> str`
+### `rotation_async(refresh_token: str, payload: Optional[Dict[str, Any]] = None) -> Tuple[str, str]`
 
 Async version of rotation. Use in async contexts.
 
@@ -263,23 +263,22 @@ ct = CipherToken(
     refresh_ttl=604800,
 )
 
-# Create tokens (3 ways)
-access_token_1 = ct.access(payload={"user_id": 42})
-access_token_2 = access(ct, payload={"user_id": 42})
-access_token_3 = ct.create_token(ttl_time=3600, token_type="access", payload={"user_id": 42})
-
-# All equivalent
-assert access_token_1 == access_token_2 == access_token_3
+# Create tokens (3 equivalent styles — each call produces a token
+# with a unique jti, so the strings themselves differ)
+access_token = ct.access(payload={"user_id": 42})
+access_token = access(ct, payload={"user_id": 42})
+access_token = ct.create_token(ttl_time=3600, token_type="access", payload={"user_id": 42})
 
 # Verify
 ct.verify(access_token)   # True
 
 # Decode
 claims = ct.decode(access_token)
-# {'exp': 1716000000, 'ttl': 3600, 'token_type': 'access', 'jti': '...', 'user_id': 42, 'role': 'admin'}
+# {'exp': 1716000000, 'ttl': 3600, 'token_type': 'access', 'jti': '...', 'user_id': 42}
 
 # Rotate
-new_access, new_refresh = ct.rotation(old_refresh_token)
+refresh_token = refresh(ct, payload={"user_id": 42})
+new_access, new_refresh = ct.rotation(refresh_token)
 ```
 
 ---
@@ -312,7 +311,7 @@ asyncio.run(main())
 
 ## Claims Structure
 
-Every token contains:
+Every token contains four automatic claims, and your payload keys are merged alongside them at the **top level** (there is no nested `"payload"` key):
 
 | Claim | Type | Description |
 |-------|------|-------------|
@@ -320,7 +319,12 @@ Every token contains:
 | `ttl` | `int` | Time-to-live in seconds when token was created |
 | `token_type` | `str` | `"access"` or `"refresh"` |
 | `jti` | `str` | UUID v4 identifier |
-| `payload` | `dict` | Flattened user-provided claims (no nested "payload" key) |
+| _your keys_ | varies | User-provided payload claims, flattened |
+
+```python
+claims = ct.decode(ct.access(payload={"user_id": 42}))
+claims["user_id"]  # 42 — top level, not claims["payload"]["user_id"]
+```
 
 ---
 

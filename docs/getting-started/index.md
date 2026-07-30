@@ -1,7 +1,7 @@
 ---
-title: Getting Started - CipherToken
-description: Next-generation JWT token management library built with Rust. Complete token lifecycle with high performance.
-keywords: jwt, getting-started, rust, python, cryptography, authentication
+title: Getting Started
+description: Learn what CipherToken is and why it outperforms conventional Python JWT libraries. Complete token lifecycle powered by Rust.
+keywords: ciphertoken getting started, python jwt tutorial, rust jwt library, jwt token management
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 

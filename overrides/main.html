@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {%- set seo = config.extra.seo | default({}) -%}
+
+  {#- Resolve per-page values with site-wide fallbacks -#}
+  {%- if page and page.meta and page.meta.title -%}
+    {%- set og_title = page.meta.title -%}
+  {%- elif page and page.title -%}
+    {%- set og_title = page.title ~ " - " ~ config.site_name -%}
+  {%- else -%}
+    {%- set og_title = config.site_name -%}
+  {%- endif -%}
+
+  {%- if page and page.meta and page.meta.description -%}
+    {%- set og_description = page.meta.description -%}
+  {%- else -%}
+    {%- set og_description = config.site_description -%}
+  {%- endif -%}
+
+  {%- if page and page.meta and page.meta.image -%}
+    {%- set og_image = page.meta.image -%}
+  {%- else -%}
+    {%- set og_image = seo.default_image -%}
+  {%- endif -%}
+
+  {#- Keywords -#}
+  {% if page and page.meta and page.meta.keywords %}
+    <meta name="keywords" content="{{ page.meta.keywords }}" />
+  {% endif %}
+
+  {#- Robots (override per page with "robots: noindex, nofollow") -#}
+  {% if page and page.meta and page.meta.robots %}
+    <meta name="robots" content="{{ page.meta.robots }}" />
+  {% else %}
+    <meta name="robots" content="index, follow" />
+  {% endif %}
+
+  {#- Open Graph -#}
+  <meta property="og:type" content="{{ seo.og_type | default('website') }}" />
+  <meta property="og:site_name" content="{{ config.site_name }}" />
+  <meta property="og:title" content="{{ og_title }}" />
+  <meta property="og:description" content="{{ og_description }}" />
+  {% if og_image %}
+    <meta property="og:image" content="{{ og_image }}" />
+  {% endif %}
+  {% if page and page.canonical_url %}
+    <meta property="og:url" content="{{ page.canonical_url }}" />
+  {% endif %}
+
+  {#- Twitter cards -#}
+  <meta name="twitter:card" content="summary_large_image" />
+  {% if seo.twitter_site %}
+    <meta name="twitter:site" content="{{ seo.twitter_site }}" />
+  {% endif %}
+  <meta name="twitter:title" content="{{ og_title }}" />
+  <meta name="twitter:description" content="{{ og_description }}" />
+  {% if og_image %}
+    <meta name="twitter:image" content="{{ og_image }}" />
+  {% endif %}
+
+  {#- Structured data (JSON-LD) -#}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CipherToken",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Linux, Windows, macOS",
+    "programmingLanguage": ["Python", "Rust"],
+    "url": "https://cipherunits.github.io/CipherToken/",
+    "downloadUrl": "https://pypi.org/project/ciphertoken/",
+    "image": "https://cipherunits.github.io/CipherToken/logo.png",
+    "description": "High-performance Python JWT library built with Rust. Fast token creation, verification, rotation and key management.",
+    "license": "https://opensource.org/licenses/MIT",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Cipher-Unit",
+      "url": "https://cipherunit.xyz/"
+    }
+  }
+  </script>
+{% endblock %}

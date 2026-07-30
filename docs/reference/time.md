@@ -1,3 +1,10 @@
+---
+title: time Module — TTL Helpers API
+description: Human-readable TTL helpers for CipherToken. Convert minutes, hours, days, and weeks to seconds for JWT expiry configuration.
+keywords: jwt ttl python, jwt expiry time, token lifetime python, unix timestamp python
+image: https://cipherunits.github.io/CipherToken/logo.png
+---
+
 # API Reference — time
 
 The `time` module provides utility functions for UNIX timestamp management and TTL calculations.

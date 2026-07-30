@@ -1,3 +1,10 @@
+---
+title: API Lookup — Full Symbol Index
+description: Searchable index of every CipherToken class, method, function, and constant — sync and async — with signatures and module locations.
+keywords: ciphertoken api index, jwt methods list, ciphertoken functions, api lookup
+image: https://cipherunits.github.io/CipherToken/logo.png
+---
+
 # API Lookup Reference
 
 Quick searchable reference for all **CipherToken** classes, functions, constants, and async counterparts.
@@ -82,20 +89,20 @@ Quick searchable reference for all **CipherToken** classes, functions, constants
 | `MIN_SECRET_SIZE` | `16` | `ciphertoken.utils` |
 
 ---
-    
-    ## Claims Structure
-    
-    | Claim | Type | Description |
-    |-------|------|-------------|
-    | `exp` | `int` | UNIX expiry timestamp |
-    | `ttl` | `int` | Time-to-live in seconds |
-    | `token_type` | `str` | `"access"` or `"refresh"` |
-    | `jti` | `str` | UUID v4 identifier |
-    | _other keys_ | varies | User-provided payload claims (flattened) |
-    
-    ---
-    
-    ## Algorithm Constants
+
+## Claims Structure
+
+| Claim | Type | Description |
+|-------|------|-------------|
+| `exp` | `int` | UNIX expiry timestamp |
+| `ttl` | `int` | Time-to-live in seconds |
+| `token_type` | `str` | `"access"` or `"refresh"` |
+| `jti` | `str` | UUID v4 identifier |
+| _other keys_ | varies | User-provided payload claims (flattened) |
+
+---
+
+## Algorithm Constants
 
 | Algorithm | Family |
 |-----------|--------|

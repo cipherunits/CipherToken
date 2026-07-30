@@ -1,7 +1,7 @@
 ---
-title: Security Best Practices - CipherToken
-description: Security best practices for JWT tokens. Learn about secret management, key rotation, algorithm selection, and token expiry.
-keywords: security, jwt, best-practices, cryptography, rust, python
+title: JWT Security Best Practices
+description: Security best practices for JWT tokens in Python — secret management, key rotation, algorithm selection, token expiry, and payload validation.
+keywords: jwt security best practices, jwt secret management, jwt key rotation, secure jwt python, token expiry
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 
@@ -32,12 +32,12 @@ Follow these security best practices to keep your token infrastructure safe. Par
 
 ```python
 import os
-from ciphertoken.secret import secret_key_with_size
 from ciphertoken import CipherToken
 from ciphertoken.algorithms import HS256
-from ciphertoken.time import minutes
+from ciphertoken.time import minutes, days
 
-# Generate a 64-byte secret once and store it securely
+# Generate a 64-byte secret once (e.g., secret_key_with_size(64)),
+# store it securely, and load it from the environment at runtime
 SECRET = os.environ["CIPHERTOKEN_SECRET"]
 
 token = CipherToken(
@@ -61,16 +61,17 @@ token = CipherToken(
 Rotate secrets periodically without downtime:
 
 ```python
+import os
 from ciphertoken import CipherToken
-from ciphertoken.time import days
-
-# Current token (still accepting old secret)
-current = CipherToken(secret=os.environ["CURRENT_SECRET"], algorithm=HS256, ...)
+from ciphertoken.algorithms import HS256
+from ciphertoken.time import minutes, days
 
 # Verify both old and new tokens during a rotation window
 validators = [
-    CipherToken(secret=os.environ["CURRENT_SECRET"], algorithm=HS256, ...),
-    CipherToken(secret=os.environ["NEW_SECRET"], algorithm=HS256, ...),
+    CipherToken(secret=os.environ["NEW_SECRET"], algorithm=HS256,
+                access_ttl=minutes(10), refresh_ttl=days(7)),
+    CipherToken(secret=os.environ["CURRENT_SECRET"], algorithm=HS256,
+                access_ttl=minutes(10), refresh_ttl=days(7)),
 ]
 
 def verify_token(token_str):
@@ -85,10 +86,10 @@ def verify_token(token_str):
 # After the grace period, retire the old secret
 ```
 
-For a simpler approach, use the built-in rotation:
+For rotating **tokens** (as opposed to secrets), use the built-in rotation:
 
 ```python
-new_access, new_refresh = current.rotation(refresh_token)
+new_access, new_refresh = validators[0].rotation(refresh_token)
 ```
 
 ---
@@ -102,8 +103,8 @@ new_access, new_refresh = current.rotation(refresh_token)
 | Regulatory/compliance requirements | `PS256`, `PS384`, or `PS512` |
 | Legacy system compatibility | Check the JWT consumer's supported algorithms first |
 
-!!! danger "Never use `none` or `HS128`"
-    The "none" algorithm means no signature. Always use a strong algorithm. Neither CipherToken nor the underlying libraries expose the `none` algorithm by default.
+!!! danger "The `none` algorithm is not supported — by design"
+    The unsigned `none` algorithm is a well-known JWT attack vector: it means no signature at all. CipherToken does not expose it, so tokens are always cryptographically signed.
 
 ---
 
@@ -132,17 +133,15 @@ token = CipherToken(
 Always validate incoming payloads before trusting them:
 
 ```python
-from ciphertoken import CipherToken
-
 claims = token.decode(access_token)
 
-# Validate expected fields
-user_id = claims["payload"].get("user_id")
+# Payload keys are flattened to the top level of the claims dict
+user_id = claims.get("user_id")
 if not isinstance(user_id, int):
     raise ValueError("Invalid payload")
 
 # Validate roles
-if "admin" not in claims["payload"].get("roles", []):
+if "admin" not in claims.get("roles", []):
     raise PermissionError("Forbidden")
 ```
 

@@ -1,7 +1,7 @@
 ---
-title: Advanced Guide - CipherToken
-description: Advanced topics for CipherToken including async usage and security best practices.
-keywords: advanced, async, security, jwt, rust, python
+title: Advanced Guide
+description: Production topics for CipherToken — native async JWT operations and security best practices for token infrastructure.
+keywords: ciphertoken advanced, async jwt, jwt security, production jwt python
 image: https://cipherunits.github.io/CipherToken/logo.png
 ---
 
